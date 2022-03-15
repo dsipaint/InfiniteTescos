@@ -1,0 +1,35 @@
+{
+	"textures": {
+		"side": "infinitetescos:block/shelfside",
+		"clean": "infinitetescos:block/shelfside_clean",
+		"particle": "#side"
+	},
+	
+	"elements": [
+		{
+			"from": [0,0,0],
+			"to": [16, 1, 16],
+			"faces": {
+			    	"down":  {"texture": "#clean"},
+                	"up":    {"texture": "#clean", "rotation": 270},
+                	"north": {"texture": "#clean"},
+                	"south": {"texture": "#clean", "cullface": "south"},
+                	"west":  {"texture": "#clean", "cullface": "west"},
+                	"east":  {"texture": "#clean", "cullface": "east"}
+			}
+		},
+		
+		{
+			"from": [0,0,0],
+			"to": [1, 16, 1],
+			"faces": {
+    			"down":  {"texture": "#clean"},
+                "up":    {"texture": "#clean"},
+                "north": {"uv": [0, 0, 1, 16], "rotation": 180, "texture": "#side"},
+                "south": {"uv": [0, 0, 1, 16], "rotation": 180, "texture": "#side"},
+                "west":  {"uv": [0, 0, 1, 16], "rotation": 180, "texture": "#side"},
+                "east":  {"uv": [0, 0, 1, 16], "rotation": 180, "texture": "#side"}
+			}
+		}
+	]
+}

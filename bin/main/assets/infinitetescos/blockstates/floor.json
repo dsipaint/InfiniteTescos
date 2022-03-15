@@ -1,0 +1,10 @@
+{
+	"variants": {
+		"": [
+			{"model": "infinitetescos:block/floor"},
+			{"model": "infinitetescos:block/floor", "y": 90}, 
+			{"model": "infinitetescos:block/floor", "y": 180}, 
+			{"model": "infinitetescos:block/floor", "y": 270}
+		]
+	}
+}

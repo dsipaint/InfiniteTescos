@@ -1,0 +1,7 @@
+Java Launcher: /home/al/.gradle/jdks/jdk-17.0.2+8/bin/java
+Arguments: '--inJar, /home/al/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.18.1-39.0.79/forge-1.18.1-39.0.79-injected.jar, --outJar, /home/al/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.18.1-39.0.79_mapped_official_1.18.1/forge-1.18.1-39.0.79_mapped_official_1.18.1.jar, --logFile, accesstransform.log, --atFile, /home/al/git/InfiniteTescos/build/_atJar_4/parent_at.cfg'
+Classpath:
+ - /home/al/.gradle/caches/forge_gradle/maven_downloader/net/minecraftforge/accesstransformers/8.0.7/accesstransformers-8.0.7-fatjar.jar
+Working directory: /home/al/git/InfiniteTescos/build/_atJar_4
+Main class: net.minecraftforge.accesstransformer.TransformerProcessor
+====================================

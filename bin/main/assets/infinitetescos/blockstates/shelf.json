@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north,shape=inner_left": {"model": "infinitetescos:block/shelf_inner", "y":180},
+    "facing=north,shape=inner_right": {"model": "infinitetescos:block/shelf_inner", "y":90},
+    "facing=north,shape=outer_left": {"model": "infinitetescos:block/shelf_outer", "y":90},
+    "facing=north,shape=outer_right": {"model": "infinitetescos:block/shelf_outer"},
+    "facing=north,shape=straight": {"model": "infinitetescos:block/shelf_straight", "y":90},
+    
+    "facing=east,shape=inner_left": {"model": "infinitetescos:block/shelf_inner", "y":270},
+    "facing=east,shape=inner_right": {"model": "infinitetescos:block/shelf_inner", "y":180},
+    "facing=east,shape=outer_left": {"model": "infinitetescos:block/shelf_outer", "y":180},
+    "facing=east,shape=outer_right": {"model": "infinitetescos:block/shelf_outer", "y":90},
+    "facing=east,shape=straight": {"model": "infinitetescos:block/shelf_straight", "y":180},
+    
+    "facing=south,shape=inner_left": {"model": "infinitetescos:block/shelf_inner"},
+    "facing=south,shape=inner_right": {"model": "infinitetescos:block/shelf_inner", "y":270},
+    "facing=south,shape=outer_left": {"model": "infinitetescos:block/shelf_outer", "y":270},
+    "facing=south,shape=outer_right": {"model": "infinitetescos:block/shelf_outer", "y":180},
+    "facing=south,shape=straight": {"model": "infinitetescos:block/shelf_straight", "y":270},
+    
+    "facing=west,shape=inner_left": {"model": "infinitetescos:block/shelf_inner", "y":90},
+    "facing=west,shape=inner_right": {"model": "infinitetescos:block/shelf_inner"},
+    "facing=west,shape=outer_left": {"model": "infinitetescos:block/shelf_outer"},
+    "facing=west,shape=outer_right": {"model": "infinitetescos:block/shelf_outer", "y":270},
+    "facing=west,shape=straight": {"model": "infinitetescos:block/shelf_straight"}
+  }
+}
