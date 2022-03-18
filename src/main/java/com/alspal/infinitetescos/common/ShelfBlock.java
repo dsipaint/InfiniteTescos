@@ -5,13 +5,11 @@ import com.mojang.math.Vector3d;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition.Builder;
@@ -116,8 +114,28 @@ public class ShelfBlock extends Block implements SimpleWaterloggedBlock
 	{
 		Direction direction = blockstate.getValue(FACING);
 		
-		BlockState infront = worldin.getBlockState(pos.offset(direction.getOpposite()));
-		BlockState behind = worldin.getBlockState(pos.offset(direction));
+		BlockState infront = null, behind = null;
+		//if we're facing east, infront must be east and behind must be west
+		if(direction == Direction.EAST)
+		{
+			infront = worldin.getBlockState(pos.east());
+			behind = worldin.getBlockState(pos.west());
+		}
+		else if(direction == Direction.WEST)
+		{
+			infront = worldin.getBlockState(pos.west());
+			behind = worldin.getBlockState(pos.east());
+		}
+		else if(direction == Direction.NORTH)
+		{
+			infront = worldin.getBlockState(pos.north());
+			behind = worldin.getBlockState(pos.south());
+		}
+		else
+		{
+			infront = worldin.getBlockState(pos.south());
+			infront = worldin.getBlockState(pos.north());
+		}
 		
 		// int currenthindex = direction.getHorizontalIndex();
 		int currenthindex = direction.get2DDataValue();
@@ -183,19 +201,40 @@ public class ShelfBlock extends Block implements SimpleWaterloggedBlock
 	}
 	
 	@Override
-	public BlockState updatePostPlacement(BlockState statein, Direction facing, BlockState facingstate, IWorld worldin, BlockPos currentpos, BlockPos facingpos)
+	public BlockState updateShape(BlockState statein, Direction facing, BlockState facingstate, LevelAccessor worldin, BlockPos currentpos, BlockPos facingpos)
 	{
 		if(statein.getValue(WATERLOGGED))
-			worldin.getPendingFluidTicks().scheduleTick(currentpos, Fluids.WATER, Fluids.WATER.getTickRate(worldin));
+			worldin.scheduleTick(currentpos, Fluids.WATER, Fluids.WATER.getTickDelay(worldin));
 		
-		return statein.with(SHAPE, getShelfShape(statein, worldin, currentpos));
+		return statein.setValue(SHAPE, getShelfShape(statein, worldin, currentpos));
 	}
 	
-	public StairsShape getShelfShape(BlockState state, Level worldIn, BlockPos pos)
+	public StairsShape getShelfShape(BlockState state, BlockGetter worldIn, BlockPos pos)
 	{
 		Direction direction = state.getValue(FACING);
-		BlockState infront = worldIn.getBlockState(pos.offset(direction.getOpposite()));
-		BlockState behind = worldIn.getBlockState(pos.offset(direction));
+		
+		BlockState infront = null, behind = null;
+		//if we're facing east, infront must be east and behind must be west
+		if(direction == Direction.EAST)
+		{
+			infront = worldIn.getBlockState(pos.east());
+			behind = worldIn.getBlockState(pos.west());
+		}
+		else if(direction == Direction.WEST)
+		{
+			infront = worldIn.getBlockState(pos.west());
+			behind = worldIn.getBlockState(pos.east());
+		}
+		else if(direction == Direction.NORTH)
+		{
+			infront = worldIn.getBlockState(pos.north());
+			behind = worldIn.getBlockState(pos.south());
+		}
+		else
+		{
+			infront = worldIn.getBlockState(pos.south());
+			infront = worldIn.getBlockState(pos.north());
+		}
 		
 		if(infront.getBlock().getRegistryName().equals(new ResourceLocation(InfiniteTescosMod.MODID, "shelf"))
 				&& direction.getAxis() != infront.getValue(FACING).getAxis()) //if infront is a shelf that is at 90 degrees
